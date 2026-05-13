@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta de Site — Dra. Amanda Pereira · Brary Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:         #08050F;
+      --surface:    #100B1A;
+      --surface2:   #160F24;
+      --border:     #231A35;
+      --purple:     #7C3AED;
+      --purple-lt:  #A855F7;
+      --purple-dim: #3D1C7A;
+      --white:      #F5F0FF;
+      --muted:      #6B5E8A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topbar strong { color: var(--purple-lt); font-weight: 500; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      min-height: 400px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-left {
+      padding: 64px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-right {
+      position: relative;
+      background: linear-gradient(135deg, #3D1C7A 0%, #08050F 100%);
+      overflow: hidden;
+    }
+    .hero-right::after {
+      content: 'AP';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 220px;
+      color: rgba(168,85,247,.15);
+      line-height: 1;
+      position: absolute;
+      bottom: -20px;
+      right: -10px;
+      letter-spacing: -.02em;
+    }
+    .hero-badge {
+      display: inline-flex;
+      gap: 8px;
+      background: rgba(124,58,237,.15);
+      border: 1px solid var(--purple-dim);
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--purple-lt);
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 9vw, 108px);
+      line-height: .9;
+      color: var(--white);
+    }
+    .hero-name span { display: block; color: var(--purple-lt); }
+    .hero-divider {
+      width: 48px; height: 2px;
+      background: var(--purple);
+      margin: 22px 0;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 420px;
+    }
+    .hero-sub strong { color: var(--white); font-weight: 500; }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .chip {
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat {
+      padding: 32px 28px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat:last-child { border-right: none; }
+    .stat::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--purple);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .stat:hover::after { transform: scaleX(1); }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--purple-lt);
+      line-height: 1;
+    }
+    .stat-label {
+      margin-top: 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: .95;
+      letter-spacing: .02em;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+    h2 em { font-style: normal; color: var(--purple-lt); }
+
+    /* CONTEXTO */
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .context-text p { font-size: 15px; color: rgba(245,240,255,.8); line-height: 1.8; }
+    .context-text p + p { margin-top: 16px; }
+    .callout {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--purple);
+      padding: 28px;
+    }
+    .callout-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: .05em;
+      color: var(--purple-lt);
+      margin-bottom: 12px;
+    }
+    .callout-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .callout-text strong { color: var(--white); }
+
+    /* AUDIÊNCIAS */
+    .audiencia-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      margin-bottom: 2px;
+    }
+    .audiencia-card {
+      background: var(--surface);
+      padding: 36px;
+    }
+    .audiencia-label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 10px;
+    }
+    .audiencia-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .audiencia-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .audiencia-list li {
+      font-size: 13px;
+      color: rgba(245,240,255,.75);
+      padding-left: 18px;
+      position: relative;
+    }
+    .audiencia-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--purple-lt);
+      font-size: 10px;
+      top: 3px;
+    }
+
+    /* PÁGINAS */
+    .paginas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .pagina-card {
+      background: var(--surface);
+      padding: 28px;
+      transition: background .2s;
+    }
+    .pagina-card:hover { background: var(--surface2); }
+    .pagina-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      color: var(--purple-dim);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .pagina-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .pagina-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .pagina-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--purple);
+      border: 1px solid var(--purple-dim);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    /* TECH */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .tech-card {
+      background: var(--surface);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .tech-icon {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--purple-lt);
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+    .tech-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .tech-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* INVESTIMENTO */
+    .invest-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+    .invest-main {
+      background: var(--purple-dim);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .invest-label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(245,240,255,.45);
+      margin-bottom: 16px;
+    }
+    .invest-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 84px;
+      line-height: 1;
+      color: var(--white);
+    }
+    .invest-curr {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px;
+      color: rgba(245,240,255,.55);
+      margin-right: 4px;
+    }
+    .invest-context {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      font-size: 12px;
+      color: rgba(245,240,255,.4);
+      line-height: 1.6;
+    }
+    .invest-context strong { color: rgba(245,240,255,.7); }
+    .invest-list {
+      background: var(--surface);
+      padding: 48px;
+    }
+    .invest-list ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .invest-list li {
+      font-size: 14px;
+      color: rgba(245,240,255,.8);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .invest-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--purple-lt);
+      font-size: 11px;
+      top: 3px;
+    }
+
+    /* STEPS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .step-card {
+      background: var(--surface);
+      padding: 32px 24px;
+    }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--purple-dim);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .step-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .step-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .footer-sigs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+    .footer-col {
+      background: var(--surface);
+      padding: 36px 48px;
+    }
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: .04em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .footer-col p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .footer-bottom {
+      padding: 18px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .footer-bottom a { color: var(--purple); text-decoration: none; }
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      border: none;
+      color: var(--white);
+      padding: 10px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .2s;
+    }
+    .print-btn:hover { background: var(--purple-lt); }
+
+    @media (max-width: 768px) {
+      .topbar, section, .hero-left, .invest-main, .invest-list, .footer-col, .footer-bottom { padding-left: 24px; padding-right: 24px; }
+      .hero, .stats, .audiencia-grid, .paginas-grid, .tech-grid, .invest-wrap, .steps-grid, .footer-sigs, .context-grid { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+    }
+    @media print { .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div><strong>Brary Design</strong> · Orlando Carvalho &nbsp;·&nbsp; Proposta Comercial</div>
+  <div>Rio de Janeiro, 09 de maio de 2026 &nbsp;·&nbsp; Válida por 7 dias</div>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Site Institucional · Plataforma de Autoridade</div>
+    <h1 class="hero-name">AMANDA<br /><span>PEREIRA</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      <strong>Dra. Amanda Pereira</strong> · Fisioterapeuta · Empresária<br />
+      Espaço Clínico Viver Bem · Goiânia, GO<br />
+      Método S4D · Coletes 3D · Workshop · Mentoria · Certificação
+    </p>
+    <div class="hero-chips">
+      <span class="chip">Cliente Brary</span>
+      <span class="chip">Goiânia · GO</span>
+      <span class="chip">2 Públicos</span>
+      <span class="chip">10 Páginas</span>
+      <span class="chip">Domínio .br incluso</span>
+    </div>
+  </div>
+  <div class="hero-right"></div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">10</div>
+    <div class="stat-label">Páginas completas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Públicos distintos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Mensalidade de plataforma</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Escalabilidade · Vercel</div>
+  </div>
+</div>
+
+<section>
+  <p class="section-tag">Contexto</p>
+  <h2>Um site à altura<br /><em>do que você construiu.</em></h2>
+  <div class="context-grid">
+    <div class="context-text">
+      <p>Amanda, você não precisa de um site de clínica. Você precisa de uma plataforma que fale com dois públicos ao mesmo tempo — o paciente que busca tratamento para escoliose e o fisioterapeuta que quer aprender seu método, participar do seu workshop ou obter sua certificação.</p>
+      <p>Esse site será o quartel general digital de tudo que você já construiu e do que ainda está construindo — incluindo o livro. Cada página com um propósito. Cada CTA levando para uma ação real.</p>
+    </div>
+    <div>
+      <div class="callout">
+        <div class="callout-title">Por que igual à loja da Sueleyne</div>
+        <div class="callout-text">
+          A Sueleyne pagou R$4.500 por uma loja com cadastro de 50 produtos, configuração de frete, pagamento e treinamento.<br /><br />
+          Seu site tem mais páginas e dois públicos distintos. Você é cliente Brary. <strong>O valor é o mesmo — porque é justo assim.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Arquitetura do site</p>
+  <h2>Dois públicos.<br /><em>Uma plataforma.</em></h2>
+  <div class="audiencia-grid">
+    <div class="audiencia-card">
+      <p class="audiencia-label">Público 1</p>
+      <p class="audiencia-title">Pacientes e Famílias</p>
+      <ul class="audiencia-list">
+        <li>Escoliose sem cirurgia — o que é, como tratar</li>
+        <li>Método S4D e Colete Rigo Cheneau 3D</li>
+        <li>Palmilhas posturais 3D e AFO-Órtese</li>
+        <li>Casos clínicos e resultados reais</li>
+        <li>Agendamento direto via WhatsApp</li>
+      </ul>
+    </div>
+    <div class="audiencia-card">
+      <p class="audiencia-label">Público 2</p>
+      <p class="audiencia-title">Fisioterapeutas</p>
+      <ul class="audiencia-list">
+        <li>Workshop presencial e online</li>
+        <li>Mentoria individual com a Dra. Amanda</li>
+        <li>Certificação Amanda Pereira — Método S4D</li>
+        <li>Página do livro com compra e informações</li>
+        <li>Inscrição e contato direto</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Páginas</p>
+  <h2>10 páginas.<br /><em>Cada uma com propósito.</em></h2>
+  <div class="paginas-grid">
+    <div class="pagina-card">
+      <div class="pagina-num">01</div>
+      <div class="pagina-title">Home / Landing Page</div>
+      <div class="pagina-desc">Headline forte, prova social, serviços em destaque e CTA WhatsApp visível em todo o scroll. Dois caminhos claros: paciente ou profissional.</div>
+      <span class="pagina-tag">Ambos os públicos</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">02</div>
+      <div class="pagina-title">Sobre Amanda</div>
+      <div class="pagina-desc">Trajetória, formação, Método S4D, Espaço Clínico Viver Bem. A página que transforma curiosidade em confiança.</div>
+      <span class="pagina-tag">Ambos os públicos</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">03</div>
+      <div class="pagina-title">Escoliose</div>
+      <div class="pagina-desc">Conteúdo educacional: o que é, tipos, diagnóstico, tratamento conservador. SEO forte para quem busca "escoliose Goiânia".</div>
+      <span class="pagina-tag">Pacientes</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">04</div>
+      <div class="pagina-title">Coletes e Palmilhas</div>
+      <div class="pagina-desc">Colete Rigo Cheneau 3D, Palmilhas posturais 3D e AFO-Órtese. Como funciona, para quem é indicado e como agendar avaliação.</div>
+      <span class="pagina-tag">Pacientes</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">05</div>
+      <div class="pagina-title">Resultados</div>
+      <div class="pagina-desc">Casos clínicos reais, depoimentos e evolução de pacientes. A prova social que fecha a decisão de quem ainda tem dúvida.</div>
+      <span class="pagina-tag">Pacientes</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">06</div>
+      <div class="pagina-title">Workshop</div>
+      <div class="pagina-desc">Página de inscrição para workshops presenciais e online. Datas, conteúdo programático, público-alvo e botão de inscrição.</div>
+      <span class="pagina-tag">Fisioterapeutas</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">07</div>
+      <div class="pagina-title">Mentoria</div>
+      <div class="pagina-desc">Mentorias individuais com a Dra. Amanda. Como funciona, para quem é, resultados esperados e formulário de interesse.</div>
+      <span class="pagina-tag">Fisioterapeutas</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">08</div>
+      <div class="pagina-title">Certificação Amanda Pereira</div>
+      <div class="pagina-desc">A certificação oficial do Método S4D. Conteúdo, carga horária, pré-requisitos, emissão do certificado e inscrição.</div>
+      <span class="pagina-tag">Fisioterapeutas</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">09</div>
+      <div class="pagina-title">O Livro</div>
+      <div class="pagina-desc">"Escoliose: Avaliação Tridimensional e Intervenção Fisioterapêutica com Coletes" — página de lançamento, sinopse, sumário e compra.</div>
+      <span class="pagina-tag">Ambos os públicos</span>
+    </div>
+    <div class="pagina-card">
+      <div class="pagina-num">10</div>
+      <div class="pagina-title">Contato e Agendamento</div>
+      <div class="pagina-desc">Endereço do Espaço Clínico Viver Bem, WhatsApp, formulário de contato e mapa. Portal de entrada para o negócio.</div>
+      <span class="pagina-tag">Ambos os públicos</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Tecnologia</p>
+  <h2>Stack moderno.<br /><em>Sem mensalidade.</em></h2>
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-icon">ANTI<br/>GRAVITY</div>
+      <div class="tech-name">Antigravity</div>
+      <div class="tech-desc">Desenvolvimento do código completo — estrutura, layout e componentes de cada página.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-icon">GIT<br/>HUB</div>
+      <div class="tech-name">GitHub</div>
+      <div class="tech-desc">Versionamento e repositório — todo o código seguro, auditável e com histórico completo.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-icon">VER<br/>CEL</div>
+      <div class="tech-name">Vercel</div>
+      <div class="tech-desc">Hospedagem de alta performance — deploy automático, SSL incluso, zero custo de servidor.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-icon">.com<br/>.br</div>
+      <div class="tech-name">Domínio .br</div>
+      <div class="tech-desc">Registro do domínio no .com.br incluso na proposta — 1ª anuidade por nossa conta.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Investimento</p>
+  <h2>Plataforma completa.<br /><em>Preço de cliente.</em></h2>
+  <div class="invest-wrap">
+    <div class="invest-main">
+      <p class="invest-label">Site Institucional · 10 páginas · 2 públicos</p>
+      <div><span class="invest-curr">R$</span><span class="invest-value">4.500</span></div>
+      <div class="invest-context">
+        A loja da Sueleyne custou <strong>R$4.500</strong> — com cadastro de produtos, frete e treinamento.<br />
+        Seu site tem mais páginas e dois públicos distintos.<br />
+        <strong>Você é cliente Brary. O valor é o mesmo.</strong>
+      </div>
+    </div>
+    <div class="invest-list">
+      <ul>
+        <li>10 páginas completas — pacientes e fisioterapeutas</li>
+        <li>Home com LP de conversão e CTA WhatsApp</li>
+        <li>Workshop, Mentoria e Certificação Amanda Pereira</li>
+        <li>Página do livro — integrada ao lançamento</li>
+        <li>Domínio .br incluso — 1ª anuidade</li>
+        <li>Hospedagem Vercel — sem mensalidade</li>
+        <li>SEO básico — "escoliose Goiânia" e variações</li>
+        <li>Entrega: 50% entrada · 50% na virada do site</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Como começa</p>
+  <h2>4 passos.<br /><em>Site no ar.</em></h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Você confirma</div>
+      <div class="step-desc">Assinatura do contrato e entrada de R$2.250 via Pix. Início imediato — sem burocracia.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Briefing de conteúdo</div>
+      <div class="step-desc">Você nos passa fotos, textos de referência, cores e identidade visual. Temos os dois modelos de site que você enviou.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Desenvolvimento</div>
+      <div class="step-desc">Código gerado no Antigravity, versionado no GitHub. Você acompanha por preview antes do deploy final.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-title">Virada e entrega</div>
+      <div class="step-desc">Domínio apontado, Vercel no ar, SSL ativo. Pagamento final de R$2.250 e o site é seu.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-sigs">
+    <div class="footer-col">
+      <h4>Orlando Carvalho</h4>
+      <p>Fundador · Brary Design<br />CNPJ 37.366.629/0001-60<br />(21) 98346-1734 · orlandocarvalho.gm</p>
+    </div>
+    <div class="footer-col">
+      <h4>Dra. Amanda Pereira</h4>
+      <p>Contratante · Fisioterapeuta<br />Espaço Clínico Viver Bem · Goiânia, GO<br />@amanda_pereira_fisioterapeuta · @espacoclinicoviverbem</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Rio de Janeiro, 09 de maio de 2026 &nbsp;·&nbsp; Válida até 16 de maio de 2026 &nbsp;·&nbsp; Brary Design</span>
+    <div style="display:flex;gap:16px;align-items:center;">
+      <a href="https://www.braryeditora.com.br" target="_blank">braryeditora.com.br</a>
+      <button class="print-btn" onclick="window.print()">🖨 Salvar PDF</button>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

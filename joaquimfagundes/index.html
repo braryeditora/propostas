@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta — Joaquim Fagundes · Brary Editora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --black2: #141414;
+      --black3: #1e1e1e;
+      --yellow: #F5C500;
+      --yellow2: #FFD700;
+      --yellow3: #FFF3A0;
+      --white: #ffffff;
+      --warm: #f5f2eb;
+      --muted: #888;
+      --muted2: #555;
+      --line: rgba(245,197,0,0.2);
+      --line2: rgba(255,255,255,0.1);
+      --max: 860px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+    }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+    /* COVER */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 56px 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--yellow);
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(245,197,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 72px;
+    }
+
+    .cover-brand small {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .cover-brand strong {
+      font-size: 14px;
+      color: var(--yellow);
+      letter-spacing: 0.08em;
+    }
+
+    .cover-date {
+      text-align: right;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.7;
+    }
+
+    .cover-main { margin-bottom: 72px; }
+
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cover-label::before {
+      content: '';
+      width: 40px;
+      height: 2px;
+      background: var(--yellow);
+    }
+
+    .cover h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .cover h1 span {
+      color: var(--yellow);
+    }
+
+    .cover-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 32px;
+    }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid rgba(245,197,0,0.3);
+      border-radius: 999px;
+      background: rgba(245,197,0,0.06);
+      font-size: 13px;
+      color: var(--yellow3);
+    }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cover-client {
+      padding: 20px 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(245,197,0,0.04);
+    }
+
+    .cover-client small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cover-client strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      display: block;
+    }
+
+    .cover-client span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .cover-total small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 6px;
+      text-align: right;
+    }
+
+    .cover-total strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.04em;
+      color: var(--yellow);
+      display: block;
+      line-height: 1;
+    }
+
+    .cover-total span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      text-align: right;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--yellow);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+
+    .section-title span { color: var(--yellow); }
+
+    .section-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      max-width: 58ch;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    /* CONTEXTO */
+    .context-card {
+      padding: 28px 32px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(245,197,0,0.04);
+      margin-bottom: 24px;
+    }
+
+    .context-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+
+    .context-card p strong {
+      color: var(--yellow);
+    }
+
+    .history-note {
+      padding: 18px 24px;
+      border-left: 3px solid var(--yellow);
+      background: rgba(245,197,0,0.04);
+      border-radius: 0 12px 12px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* TABELA */
+    .table-wrap {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background: rgba(245,197,0,0.08);
+    }
+
+    th {
+      padding: 16px 24px;
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    th:last-child { text-align: right; }
+
+    td {
+      padding: 18px 24px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .bonus-row td {
+      color: var(--yellow) !important;
+      background: rgba(245,197,0,0.04);
+    }
+
+    .bonus-row td:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .original-price {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3) !important;
+      text-decoration: line-through;
+      font-weight: 400 !important;
+    }
+
+    .total-row td {
+      background: var(--yellow);
+      color: var(--black) !important;
+      font-weight: 700 !important;
+      font-size: 16px !important;
+    }
+
+    .total-row td:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem !important;
+      letter-spacing: 0.08em;
+    }
+
+    /* PARCERIA */
+    .parceria-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .parceria-card {
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .parceria-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--yellow);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .parceria-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* SEBRAE */
+    .sebrae-strip {
+      background: var(--yellow);
+      padding: 28px 0;
+    }
+
+    .sebrae-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .sebrae-inner p {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--black);
+    }
+
+    .sebrae-inner span {
+      font-size: 13px;
+      color: rgba(0,0,0,0.6);
+    }
+
+    /* ASSINATURA */
+    .sign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .sign-block { border-top: 1.5px solid rgba(255,255,255,0.2); padding-top: 16px; }
+    .sign-space { height: 60px; }
+    .sign-block h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .sign-block p { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .foot {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .foot p { font-size: 11px; color: rgba(255,255,255,0.2); }
+    .foot span { color: var(--yellow); font-size: 11px; }
+
+    /* PRINT BTN */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      padding: 12px 20px;
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 8px 24px rgba(245,197,0,0.3);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .print-btn:hover {
+      background: var(--yellow2);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+      .cover-bottom { flex-direction: column; }
+      .cover-total { text-align: left; }
+      .cover-total small, .cover-total span { text-align: left; }
+      .parceria-grid { grid-template-columns: 1fr; }
+      .sign-grid { grid-template-columns: 1fr; }
+      .sebrae-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAPA -->
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-top">
+        <div class="cover-brand">
+          <small>Brary Editora · Orlando Carvalho</small>
+          <strong>PROPOSTA DE PARCERIA</strong>
+        </div>
+        <div class="cover-date">
+          Rio de Janeiro, 06 de maio de 2026<br>
+          <span style="color:rgba(255,255,255,0.2)">Válida por 7 dias</span>
+        </div>
+      </div>
+
+      <div class="cover-main">
+        <div class="cover-label">Registros Editoriais · Parceria SEBRAE</div>
+        <h1>JOAQUIM<br><span>FAGUNDES</span></h1>
+          <p class="cover-subtitle">"O que 35 anos formando empresários me ensinaram"</p>
+        <div class="cover-badge">
+          +130 mil empresários treinados · Facilitador SEBRAE Empretec · 35 anos
+        </div>
+
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:110px; height:110px; border-radius:999px; background:var(--yellow); color:var(--black); font-family:'Bebas Neue',sans-serif; font-size:0.95rem; letter-spacing:0.06em; text-align:center; line-height:1.2; margin-top:20px; box-shadow: 0 8px 24px rgba(245,197,0,0.3);">
+          +130 MIL<br>EMPRESÁRIOS<br>TREINADOS
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <div class="cover-client">
+          <small>Contratante</small>
+          <strong>Joaquim Fagundes</strong>
+          <span>Facilitador SEBRAE · Empretec</span>
+        </div>
+        <div class="cover-total">
+          <small>Investimento</small>
+          <strong>R$500,00</strong>
+          <span>+ Bônus Selo Brary (R$497,00)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEXTO -->
+  <section>
+    <div class="container">
+      <div class="section-label">Contexto da parceria</div>
+      <h2 class="section-title">Uma parceria que <span>começou em 2013.</span></h2>
+      <p class="section-desc">Quando você me pediu o primeiro trabalho, eu morava na Romênia. Hoje, mais de 10 anos depois, a Brary Editora existe e o seu livro chega ao mercado com o peso que merece.</p>
+
+      <div class="context-card">
+        <p>
+          Você formou <strong>mais de 110 mil empresários</strong> pelo SEBRAE Empretec ao longo de 30 anos. Esse conhecimento acumulado — o que o mercado reconhece como autoridade real — merece estar publicado com credencial editorial completa: ISBN, ficha catalográfica, registro de direito autoral e o Selo da Brary Editora.
+        </p>
+      </div>
+
+      <div class="history-note">
+        "A Brary Editora nasceu de um trabalho para o Joaquim em 2013, quando eu morava na Romênia. Fechar esse ciclo com o seu livro publicado com todos os registros é mais do que uma entrega — é uma história que se completa."
+        <br><br>
+        — Orlando Carvalho, Fundador da Brary Editora
+      </div>
+    </div>
+  </section>
+
+  <!-- SEBRAE STRIP -->
+  <div class="sebrae-strip">
+    <div class="sebrae-inner">
+      <p>FACILITADOR SEBRAE EMPRETEC · +130 MIL EMPRESÁRIOS FORMADOS · 35 ANOS</p>
+      <span>Autoridade que o mercado já reconhece. Agora com credencial editorial.</span>
+    </div>
+  </div>
+
+  <!-- PROPOSTA -->
+  <section>
+    <div class="container">
+      <div class="section-label">Proposta de registros</div>
+      <h2 class="section-title">O que está <span>incluído.</span></h2>
+      <p class="section-desc">Registros editoriais completos para o livro "Organização e Gestão do Negócio" — com bônus exclusivo de parceria.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Registro ISBN</td>
+              <td>Código internacional de identificação do livro — obrigatório para distribuição e comercialização.</td>
+              <td><span style="text-decoration:line-through;color:rgba(255,255,255,0.3);font-size:12px;">R$109,60</span></td>
+            </tr>
+            <tr>
+              <td>Arquivo de Código de Barras</td>
+              <td>Código de barras digital do livro para comercialização em livrarias e plataformas.</td>
+              <td><span style="text-decoration:line-through;color:rgba(255,255,255,0.3);font-size:12px;">R$158,00</span></td>
+            </tr>
+            <tr>
+              <td>Ficha Catalográfica</td>
+              <td>Catalogação oficial junto à Câmara Brasileira do Livro. Exigida em publicações profissionais.</td>
+              <td><span style="text-decoration:line-through;color:rgba(255,255,255,0.3);font-size:12px;">R$197,40</span></td>
+            </tr>
+            <tr>
+              <td>Registro de Direito Autoral</td>
+              <td>Proteção legal da obra junto à Biblioteca Nacional. Garante seus direitos como autor.</td>
+              <td><span style="text-decoration:line-through;color:rgba(255,255,255,0.3);font-size:12px;">R$139,80</span></td>
+            </tr>
+            <tr>
+              <td>Declaração de Registro do ISBN</td>
+              <td>Documento oficial de registro do ISBN para uso em contratos e apresentações.</td>
+              <td><span style="text-decoration:line-through;color:rgba(255,255,255,0.3);font-size:12px;">R$60,00</span></td>
+            </tr>
+            <tr class="bonus-row">
+              <td>
+                <span>Selo Editorial Brary Institute</span>
+                <span class="original-price">R$497,00</span>
+              </td>
+              <td>Certificação editorial da Brary — diferencial de autoridade que acompanha o livro em todas as apresentações. <strong style="color:var(--yellow)">Bônus exclusivo de parceria.</strong></td>
+              <td>BÔNUS</td>
+            </tr>
+            <tr class="total-row">
+              <td>TOTAL</td>
+              <td>Preço de parceria · 57% de desconto · Economia de R$661,80</td>
+              <td>R$500,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCERIA -->
+  <section>
+    <div class="container">
+      <div class="section-label">Visão de longo prazo</div>
+      <h2 class="section-title">Mais do que <span>registros.</span></h2>
+      <p class="section-desc">A Brary Editora quer crescer junto com o ecossistema SEBRAE Empretec. Você tem acesso a empresários que precisam publicar seus métodos — nós temos a estrutura para fazer isso acontecer.</p>
+
+      <div class="parceria-grid">
+        <div class="parceria-card">
+          <h4>📚 Para você</h4>
+          <p>Livro publicado com credencial editorial completa, ISBN, direito autoral e Selo Brary — tudo que um livro de autoridade precisa ter.</p>
+        </div>
+        <div class="parceria-card">
+          <h4>🤝 Para o ecossistema</h4>
+          <p>Empresários e facilitadores Empretec que queiram publicar seus métodos terão na Brary uma editora parceira com condições especiais.</p>
+        </div>
+        <div class="parceria-card">
+          <h4>🎯 Indicações</h4>
+          <p>Cada empresário formado pelo SEBRAE que tem um livro na cabeça é um potencial autor. A Brary converte esse conhecimento em publicação real.</p>
+        </div>
+        <div class="parceria-card">
+          <h4>⭐ Condições especiais</h4>
+          <p>Autores indicados por você terão condições diferenciadas na Brary Editora — como reconhecimento da parceria de longo prazo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDIÇÕES E ASSINATURA -->
+  <section>
+    <div class="container">
+      <div class="section-label">Condições e aceite</div>
+      <h2 class="section-title">Próximos <span>passos.</span></h2>
+
+      <div class="context-card" style="margin-bottom:32px;">
+        <p>
+          ✅ Pagamento único de <strong>R$500,00</strong> na confirmação da proposta.<br><br>
+          ✅ <strong style="color:var(--yellow); font-size:16px;">PIX: (21) 98346-1734</strong> · Orlando Carvalho · Brary Editora.<br><br>
+          ✅ Todos os registros serão protocolados junto aos órgãos competentes (CBL e Biblioteca Nacional) em até 5 dias úteis após o pagamento.<br><br>
+          ✅ O <strong>Selo Editorial Brary Institute</strong> (valor R$497,00) é incluído sem custo adicional como bônus da parceria.<br><br>
+          ✅ Proposta válida até <strong>13 de maio de 2026</strong>.
+        </p>
+      </div>
+
+      <div class="sign-grid">
+        <div class="sign-block">
+          <div class="sign-space"></div>
+          <h4>Orlando Carvalho</h4>
+          <p>Fundador · Brary Editora<br>CNPJ 37.366.629/0001-60</p>
+        </div>
+        <div class="sign-block">
+          <div class="sign-space"></div>
+          <h4>Joaquim Fagundes</h4>
+          <p>Autor · Facilitador SEBRAE Empretec</p>
+        </div>
+      </div>
+
+      <p style="margin-top:32px; font-size:12px; color:rgba(255,255,255,0.2); text-align:center;">
+        Rio de Janeiro, 06 de maio de 2026 · Brary Editora · orlando-servicos.vercel.app
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <p>Orlando Carvalho · Brary Editora · (21) 98346-1734</p>
+      <span>orlando-servicos.vercel.app</span>
+    </div>
+  </footer>
+
+  <button class="print-btn no-print" onclick="window.print()">
+    🖨️ Salvar PDF
+  </button>
+
+</body>
+</html>

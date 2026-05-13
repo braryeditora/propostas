@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta Comercial — Encanto de Morena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rose: #c17b6b;
+      --rose2: #d4907f;
+      --rose3: #f2d5cc;
+      --dark: #1a1208;
+      --dark2: #2a1f10;
+      --warm: #f7f2ec;
+      --warm2: #ede5d8;
+      --warm3: #e0d4c3;
+      --gold: #b8892a;
+      --gold2: #d4a843;
+      --muted: #7a6a58;
+      --muted2: #5a4d3e;
+      --line: rgba(90,77,62,0.15);
+      --max: 820px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    @media print {
+      body { background: white; }
+      .no-print { display: none; }
+      .page-break { page-break-before: always; }
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* COVER */
+    .cover {
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(193,123,107,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184,137,42,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 80px;
+    }
+
+    .cover-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cover-brand small {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+
+    .cover-brand strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+    }
+
+    .cover-date {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-align: right;
+    }
+
+    .cover-main { margin-bottom: 80px; }
+
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose2);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cover-label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--rose2);
+    }
+
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cover h1 em {
+      font-style: italic;
+      color: var(--rose2);
+    }
+
+    .cover-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 46ch;
+      line-height: 1.7;
+    }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cover-client {
+      padding: 20px 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cover-client small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cover-client strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: #fff;
+      display: block;
+    }
+
+    .cover-client span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .cover-total {
+      text-align: right;
+    }
+
+    .cover-total small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cover-total strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      color: var(--rose2);
+      line-height: 1;
+      display: block;
+    }
+
+    .cover-total span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--rose);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--dark);
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 58ch;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    /* PROBLEMA */
+    .problems {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .problem-item {
+      display: flex;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--warm2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .problem-x {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border-radius: 999px;
+      background: rgba(193,123,107,0.12);
+      border: 1px solid rgba(193,123,107,0.2);
+      color: var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .problem-item p {
+      font-size: 14px;
+      color: var(--muted2);
+      line-height: 1.6;
+    }
+
+    .solution-note {
+      padding: 20px 24px;
+      border-left: 3px solid var(--rose);
+      background: rgba(193,123,107,0.06);
+      border-radius: 0 12px 12px 0;
+      font-size: 15px;
+      color: var(--dark2);
+      line-height: 1.7;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    /* SPRINTS */
+    .sprints { display: flex; flex-direction: column; gap: 20px; }
+
+    .sprint-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .sprint-header {
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--warm2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sprint-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sprint-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--dark);
+      color: var(--rose2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .sprint-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .sprint-header p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .sprint-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--rose);
+      white-space: nowrap;
+    }
+
+    .sprint-body {
+      padding: 24px 28px;
+    }
+
+    .sprint-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .sprint-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted2);
+      line-height: 1.5;
+    }
+
+    .sprint-list li::before {
+      content: '✓';
+      color: var(--rose);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* TOTAL */
+    .total-card {
+      background: var(--dark);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .total-left h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .total-left p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      max-width: 40ch;
+      line-height: 1.6;
+    }
+
+    .total-right {
+      text-align: right;
+    }
+
+    .total-right small {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .total-right strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: var(--rose2);
+      line-height: 1;
+      display: block;
+    }
+
+    .total-right span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* CRONOGRAMA */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--rose);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .timeline-line {
+      width: 1px;
+      flex: 1;
+      background: var(--line);
+      margin: 4px auto 0;
+      min-height: 40px;
+    }
+
+    .timeline-item:last-child .timeline-line { display: none; }
+
+    .timeline-content { flex: 1; padding-bottom: 8px; }
+
+    .timeline-week {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 6px;
+    }
+
+    .timeline-content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CONDIÇÕES */
+    .conditions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .condition-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--warm2);
+    }
+
+    .condition-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .condition-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ASSINATURA */
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .signature-block {
+      border-top: 1.5px solid var(--dark);
+      padding-top: 14px;
+    }
+
+    .signature-block h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .signature-block p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .signature-space {
+      height: 64px;
+    }
+
+    /* FOOTER */
+    .doc-footer {
+      background: var(--dark2);
+      padding: 28px 0;
+    }
+
+    .doc-footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .doc-footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* PRINT BTN */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      padding: 12px 20px;
+      background: var(--dark);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .print-btn:hover {
+      background: var(--rose);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+      .cover-bottom { flex-direction: column; align-items: flex-start; }
+      .cover-total { text-align: left; }
+      .conditions { grid-template-columns: 1fr; }
+      .signature-grid { grid-template-columns: 1fr; }
+      .total-card { flex-direction: column; align-items: flex-start; }
+      .total-right { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAPA -->
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-top">
+        <div class="cover-brand">
+          <small>Brary Design · Orlando Carvalho</small>
+          <strong>Proposta Comercial</strong>
+        </div>
+        <div class="cover-date">
+          Rio de Janeiro, 06 de maio de 2026<br>
+          <span style="color:rgba(255,255,255,0.2)">Válida por 7 dias</span>
+        </div>
+      </div>
+
+      <div class="cover-main">
+        <div class="cover-label">Loja Virtual · Nuvemshop</div>
+        <h1>Encanto<br>de <em>Morena</em></h1>
+        <p class="cover-sub">Estruturação completa da loja virtual para venda a revendedoras — catálogo organizado, pedidos automatizados e fim do caos no WhatsApp.</p>
+      </div>
+
+      <div class="cover-bottom">
+        <div class="cover-client">
+          <small>Contratante</small>
+          <strong>Sueleyne Rodrigues</strong>
+          <span>CNPJ 37.422.032/0001-95 · Encanto de Morena</span>
+        </div>
+        <div class="cover-total">
+          <small>Investimento total</small>
+          <strong>R$4.500</strong>
+          <span>3 sprints · pagamento por etapa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMA -->
+  <div class="section">
+    <div class="container">
+      <div class="section-label">Diagnóstico</div>
+      <h2 class="section-title">O problema que vamos <em>resolver.</em></h2>
+      <p class="section-desc">Vender roupas pelo WhatsApp funciona — até o momento em que o volume de pedidos ultrapassa a capacidade de atendimento manual. Esse é o ponto onde você está agora.</p>
+
+      <div class="problems">
+        <div class="problem-item">
+          <div class="problem-x">×</div>
+          <p>Atendimento manual no WhatsApp para cada revendedora — tamanho, cor, preço, disponibilidade — resposta por resposta.</p>
+        </div>
+        <div class="problem-item">
+          <div class="problem-x">×</div>
+          <p>Sem catálogo organizado com variações P/M/G/GG — cliente precisa perguntar tudo individualmente.</p>
+        </div>
+        <div class="problem-item">
+          <div class="problem-x">×</div>
+          <p>Pedidos chegam de formas diferentes — mensagem, áudio, print — sem padrão, sem controle de estoque.</p>
+        </div>
+        <div class="problem-item">
+          <div class="problem-x">×</div>
+          <p>Volume de atendimento esgotando energia e tempo que poderiam ir para a produção e crescimento do negócio.</p>
+        </div>
+      </div>
+
+      <div class="solution-note">
+        "A loja virtual não substitui o relacionamento com as revendedoras — ela libera você para focar no que só você pode fazer: criar, produzir e expandir."
+      </div>
+    </div>
+  </div>
+
+  <!-- SPRINTS -->
+  <div class="section">
+    <div class="container">
+      <div class="section-label">Escopo do projeto</div>
+      <h2 class="section-title">Entrega em 3 <em>sprints.</em></h2>
+      <p class="section-desc">Cada sprint tem escopo claro, prazo definido e entrega real. Você aprova cada etapa antes do próximo pagamento.</p>
+
+      <div class="sprints">
+        <div class="sprint-card">
+          <div class="sprint-header">
+            <div class="sprint-header-left">
+              <div class="sprint-num">1</div>
+              <div>
+                <h3>Estrutura da Loja</h3>
+                <p>Prazo: até 11 de maio de 2026</p>
+              </div>
+            </div>
+            <div class="sprint-price">R$1.500</div>
+          </div>
+          <div class="sprint-body">
+            <ul class="sprint-list">
+              <li>Criação e configuração da conta Nuvemshop</li>
+              <li>Identidade visual básica da loja — cores, logo e banner</li>
+              <li>Cadastro dos produtos com variações P / M / G / GG</li>
+              <li>Campo de quantidade por tamanho para pedidos de revendedoras</li>
+              <li>Organização por coleções e categorias</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sprint-card">
+          <div class="sprint-header">
+            <div class="sprint-header-left">
+              <div class="sprint-num">2</div>
+              <div>
+                <h3>Operação e Pagamento</h3>
+                <p>Prazo: até 18 de maio de 2026</p>
+              </div>
+            </div>
+            <div class="sprint-price">R$1.500</div>
+          </div>
+          <div class="sprint-body">
+            <ul class="sprint-list">
+              <li>Configuração de formas de pagamento (Pix, cartão, boleto)</li>
+              <li>Fluxo de pedido para revendedoras — mínimo por peça/tamanho</li>
+              <li>Link da loja integrado ao WhatsApp Business</li>
+              <li>Página de contato e política de trocas</li>
+              <li>Configuração básica de frete</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sprint-card">
+          <div class="sprint-header">
+            <div class="sprint-header-left">
+              <div class="sprint-num">3</div>
+              <div>
+                <h3>Entrega e Treinamento</h3>
+                <p>Prazo: até 25 de maio de 2026</p>
+              </div>
+            </div>
+            <div class="sprint-price">R$1.500</div>
+          </div>
+          <div class="sprint-body">
+            <ul class="sprint-list">
+              <li>Treinamento completo por videochamada — como adicionar produtos, gerenciar pedidos e acompanhar vendas</li>
+              <li>Geração do catálogo em PDF direto pela loja</li>
+              <li>Ajustes finais de layout e conteúdo</li>
+              <li>Entrega da loja 100% operacional</li>
+              <li>Suporte por 7 dias após a entrega</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-card">
+        <div class="total-left">
+          <h4>Projeto completo — loja 100% operacional</h4>
+          <p>Pagamento por sprint — você vê e aprova cada entrega antes de pagar a próxima etapa. Sem surpresa, sem risco.</p>
+        </div>
+        <div class="total-right">
+          <small>Investimento total</small>
+          <strong>R$4.500</strong>
+          <span>3 × R$1.500 · um por sprint</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRONOGRAMA -->
+  <div class="section">
+    <div class="container">
+      <div class="section-label">Cronograma</div>
+      <h2 class="section-title">Loja operacional em <em>25 dias.</em></h2>
+      <p class="section-desc">O projeto começa na semana do fechamento do contrato e entrega com a loja funcionando até 25 de maio.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-week">Semana 1 · até 11/05</div>
+            <h4>Sprint 1 — Estrutura da loja</h4>
+            <p>Conta Nuvemshop criada, produtos cadastrados com variações, identidade visual básica aplicada.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-week">Semana 2 · até 18/05</div>
+            <h4>Sprint 2 — Pagamento e operação</h4>
+            <p>Pagamentos configurados, fluxo de pedido para revendedoras funcionando, integração com WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-week">Semana 3 · até 25/05</div>
+            <h4>Sprint 3 — Entrega e treinamento</h4>
+            <p>Treinamento por videochamada, catálogo em PDF gerado, ajustes finais, loja entregue e funcionando.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONDIÇÕES -->
+  <div class="section">
+    <div class="container">
+      <div class="section-label">Condições comerciais</div>
+      <h2 class="section-title">Termos do <em>projeto.</em></h2>
+
+      <div class="conditions">
+        <div class="condition-card">
+          <h4>💳 Pagamento</h4>
+          <p>R$1.500 por sprint, pago no início de cada etapa. O Sprint 1 é pago na assinatura do contrato para início imediato.</p>
+        </div>
+        <div class="condition-card">
+          <h4>📅 Prazo</h4>
+          <p>25 dias corridos a partir da assinatura do contrato e confirmação do primeiro pagamento.</p>
+        </div>
+        <div class="condition-card">
+          <h4>🔄 Revisões</h4>
+          <p>Cada sprint inclui até 2 rodadas de ajuste. Alterações de escopo após aprovação são orçadas separadamente.</p>
+        </div>
+        <div class="condition-card">
+          <h4>📦 Responsabilidades</h4>
+          <p>A contratante fornece fotos dos produtos, descrições e informações de preço. A Nuvemshop tem custo mensal próprio após o período gratuito.</p>
+        </div>
+        <div class="condition-card">
+          <h4>🛡️ Suporte</h4>
+          <p>7 dias de suporte após a entrega final para ajustes e dúvidas operacionais.</p>
+        </div>
+        <div class="condition-card">
+          <h4>✅ Validade</h4>
+          <p>Esta proposta é válida por 7 dias a partir da data de emissão. Após esse prazo, os valores podem ser revistos.</p>
+        </div>
+      </div>
+
+      <!-- ASSINATURA -->
+      <div class="signature-grid">
+        <div class="signature-block">
+          <div class="signature-space"></div>
+          <h4>Orlando Carvalho</h4>
+          <p>Prestador de serviços · Brary Design<br>CNPJ 37.366.629/0001-60</p>
+        </div>
+        <div class="signature-block">
+          <div class="signature-space"></div>
+          <h4>Sueleyne Rodrigues</h4>
+          <p>Contratante · Encanto de Morena<br>CNPJ 37.422.032/0001-95</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 32px; font-size: 12px; color: var(--muted); text-align: center;">
+        Rio de Janeiro, 06 de maio de 2026 · Proposta válida até 13 de maio de 2026
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-inner">
+      <p>Orlando Carvalho · Brary Design · orlandocarvalho.gm · (21) 98346-1734</p>
+      <p>orlando-servicos.vercel.app</p>
+    </div>
+  </div>
+
+  <!-- PRINT BTN -->
+  <button class="print-btn no-print" onclick="window.print()">
+    🖨️ Imprimir / Salvar PDF
+  </button>
+
+</body>
+</html>

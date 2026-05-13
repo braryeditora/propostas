@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta — Dra. Amanda Pereira · Brary Editora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:         #08050F;
+      --surface:    #100B1A;
+      --surface2:   #160F24;
+      --border:     #231A35;
+      --purple:     #7C3AED;
+      --purple-lt:  #A855F7;
+      --purple-dim: #3D1C7A;
+      --white:      #F5F0FF;
+      --muted:      #6B5E8A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topbar strong { color: var(--purple-lt); font-weight: 500; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      min-height: 400px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-left {
+      padding: 64px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-right {
+      position: relative;
+      background: linear-gradient(135deg, #3D1C7A 0%, #08050F 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-right::after {
+      content: 'AP';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 220px;
+      color: rgba(168,85,247,.15);
+      line-height: 1;
+      position: absolute;
+      bottom: -20px;
+      right: -10px;
+      letter-spacing: -.02em;
+    }
+    .hero-badge {
+      display: inline-flex;
+      gap: 8px;
+      background: rgba(124,58,237,.15);
+      border: 1px solid var(--purple-dim);
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--purple-lt);
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 9vw, 108px);
+      line-height: .9;
+      color: var(--white);
+    }
+    .hero-name span { display: block; color: var(--purple-lt); }
+    .hero-divider {
+      width: 48px; height: 2px;
+      background: var(--purple);
+      margin: 22px 0;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 420px;
+    }
+    .hero-sub strong { color: var(--white); font-weight: 500; }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .chip {
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat {
+      padding: 32px 28px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat:last-child { border-right: none; }
+    .stat::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--purple);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .stat:hover::after { transform: scaleX(1); }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--purple-lt);
+      line-height: 1;
+    }
+    .stat-label {
+      margin-top: 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: .95;
+      letter-spacing: .02em;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+    h2 em { font-style: normal; color: var(--purple-lt); }
+
+    /* CONTEXTO */
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .context-text p { font-size: 15px; color: rgba(245,240,255,.8); line-height: 1.8; }
+    .context-text p + p { margin-top: 16px; }
+    .callout {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--purple);
+      padding: 28px 28px;
+    }
+    .callout-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: .05em;
+      color: var(--purple-lt);
+      margin-bottom: 12px;
+    }
+    .callout-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .callout-text strong { color: var(--white); }
+
+    /* SUMÁRIO */
+    .sumario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      margin-bottom: 2px;
+    }
+    .parte-card {
+      background: var(--surface);
+      padding: 28px;
+      transition: background .2s;
+    }
+    .parte-card:hover { background: var(--surface2); }
+    .parte-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      color: var(--purple-dim);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .parte-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--purple-lt);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .parte-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* DELIVERABLES */
+    .deliverables {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+    .deliverable {
+      background: var(--surface);
+      padding: 28px;
+      transition: background .2s;
+    }
+    .deliverable:hover { background: var(--surface2); }
+    .d-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      color: var(--purple-dim);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .d-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .d-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* INVESTIMENTO */
+    .invest-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+    .invest-main {
+      background: var(--purple-dim);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .invest-label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(245,240,255,.45);
+      margin-bottom: 16px;
+    }
+    .invest-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 84px;
+      line-height: 1;
+      color: var(--white);
+    }
+    .invest-curr {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px;
+      color: rgba(245,240,255,.55);
+      margin-right: 4px;
+    }
+    .invest-alt {
+      margin-top: 12px;
+      font-size: 13px;
+      color: rgba(245,240,255,.45);
+    }
+    .invest-list {
+      background: var(--surface);
+      padding: 48px;
+    }
+    .invest-list ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .invest-list li {
+      font-size: 14px;
+      color: rgba(245,240,255,.8);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .invest-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--purple-lt);
+      font-size: 11px;
+      top: 3px;
+    }
+
+    /* STEPS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .step-card {
+      background: var(--surface);
+      padding: 32px 24px;
+    }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--purple-dim);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .step-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .step-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .footer-sigs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+    }
+    .footer-col {
+      background: var(--surface);
+      padding: 36px 48px;
+    }
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: .04em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .footer-col p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .footer-bottom {
+      padding: 18px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .footer-bottom a { color: var(--purple); text-decoration: none; }
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      border: none;
+      color: var(--white);
+      padding: 10px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .2s;
+    }
+    .print-btn:hover { background: var(--purple-lt); }
+
+    @media (max-width: 768px) {
+      .topbar, section, .hero-left, .invest-main, .invest-list, .footer-col, .footer-bottom { padding-left: 24px; padding-right: 24px; }
+      .hero, .stats, .deliverables, .sumario-grid, .invest-wrap, .steps-grid, .footer-sigs, .context-grid { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+    }
+    @media print { .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div><strong>Brary Editora</strong> · Orlando Carvalho &nbsp;·&nbsp; Proposta Comercial</div>
+  <div>Rio de Janeiro, 09 de maio de 2026 &nbsp;·&nbsp; Válida por 7 dias</div>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Ghostwriting · Livro Técnico Completo</div>
+    <h1 class="hero-name">AMANDA<br /><span>PEREIRA</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      <strong>Dra. Amanda Pereira</strong> · Fisioterapeuta · Empresária<br />
+      Espaço Clínico Viver Bem · Goiânia, GO<br />
+      Especialista em Escoliose · Método S4D · Coletes Ortopédicos 3D<br />
+      Autora de <em>"Escoliose: Avaliação Tridimensional e Intervenção Fisioterapêutica com Coletes"</em>
+    </p>
+    <div class="hero-chips">
+      <span class="chip">Goiânia · GO</span>
+      <span class="chip">Método S4D</span>
+      <span class="chip">3K seguidores · clínica</span>
+      <span class="chip">22 Capítulos · 6 Partes</span>
+    </div>
+  </div>
+  <div class="hero-right"></div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">22</div>
+    <div class="stat-label">Capítulos + Anexos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Partes estruturadas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">~150</div>
+    <div class="stat-label">Páginas · formato 16×23</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Rodadas de revisão</div>
+  </div>
+</div>
+
+<section>
+  <p class="section-tag">Por que esta proposta</p>
+  <h2>O conhecimento está<br /><em>na sua cabeça.</em></h2>
+  <div class="context-grid">
+    <div class="context-text">
+      <p>Amanda, você já tem o livro. O sumário que você montou não é uma lista de assuntos — é um raciocínio clínico estruturado, com progressão impecável da anatomia ao caso real. O Método S4D, os coletes, os casos reais do Espaço Clínico Viver Bem. Da Parte I ao Capítulo 22, você já pensa como autora. O que falta é tempo — e esse problema eu resolvo.</p>
+      <p>Ghostwriting não é escrever por você. É extrair o que está na sua cabeça, na sua prática em Goiânia, nos seus pacientes e nas suas decisões clínicas — e transformar isso em um livro que soa exatamente como você. Sua voz. Sua autoridade. Seu nome na capa.</p>
+    </div>
+    <div>
+      <div class="callout">
+        <div class="callout-title">O que o sumário revela</div>
+        <div class="callout-text">
+          <strong>Método S4D · Colete Rigo Cheneau 3D · Palmilhas 3D · AFO-Órtese</strong> — um ecossistema clínico completo que poucos fisioterapeutas no Brasil dominam.<br /><br />
+          A @espacoclinicoviverbem tem 3.033 seguidores e cresce com consistência. Um livro transforma essa autoridade online em credencial permanente — que nenhum algoritmo deprecia.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Estrutura da obra</p>
+  <h2>6 partes.<br /><em>Do fundamento ao caso clínico.</em></h2>
+  <div class="sumario-grid">
+    <div class="parte-card">
+      <div class="parte-num">I</div>
+      <div class="parte-title">Fundamentos Científicos</div>
+      <div class="parte-desc">Anatomia, biomecânica e curvaturas fisiológicas — a base que sustenta tudo que vem depois. Capítulos 1 a 3.</div>
+    </div>
+    <div class="parte-card">
+      <div class="parte-num">II</div>
+      <div class="parte-title">Classificações e Etiologias</div>
+      <div class="parte-desc">Tipos, origens, faixas etárias, escoliose estrutural vs. funcional e red flags clínicos. Capítulo 4 com 7 seções.</div>
+    </div>
+    <div class="parte-card">
+      <div class="parte-num">III</div>
+      <div class="parte-title">Avaliação Clínica e Prognóstica</div>
+      <div class="parte-desc">Postura, exames de imagem, ângulo de Cobb, Risser e fator de progressão — com fórmulas e escalas reais. Capítulos 5 a 8.</div>
+    </div>
+    <div class="parte-card">
+      <div class="parte-num">IV</div>
+      <div class="parte-title">Tratamento Conservador</div>
+      <div class="parte-desc">Evidências, terapias tridimensionais, exercícios específicos e confecção de coletes personalizados. Capítulos 9 a 13.</div>
+    </div>
+    <div class="parte-card">
+      <div class="parte-num">V</div>
+      <div class="parte-title">Cirurgias e Comparativos</div>
+      <div class="parte-desc">Critérios cirúrgicos, tipos de cirurgia no Brasil e o comparativo direto com o tratamento conservador. Capítulos 14 a 16.</div>
+    </div>
+    <div class="parte-card">
+      <div class="parte-num">VI</div>
+      <div class="parte-title">Casos Clínicos e Prática</div>
+      <div class="parte-desc">4 estudos de caso reais — escoliose idiopática, antálgica, Sheuermann e degenerativa — mais o papel da família. Capítulos 17 a 19.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Escopo completo</p>
+  <h2>O que está<br /><em>incluído.</em></h2>
+  <div class="deliverables">
+    <div class="deliverable">
+      <div class="d-num">01</div>
+      <div class="d-title">Entrevistas de briefing</div>
+      <div class="d-desc">Sessões por áudio ou vídeo para capturar sua voz, seu raciocínio clínico e seus casos reais. Você fala — eu estruturo.</div>
+    </div>
+    <div class="deliverable">
+      <div class="d-num">02</div>
+      <div class="d-title">Manuscrito completo</div>
+      <div class="d-desc">Todos os 22 capítulos + anexos escritos do zero — com linguagem técnica, referências incorporadas e narrativa clínica coerente.</div>
+    </div>
+    <div class="deliverable">
+      <div class="d-num">03</div>
+      <div class="d-title">Sua voz preservada</div>
+      <div class="d-desc">O livro soa como você. Não como um texto genérico. Cada capítulo revisado para manter o tom, a precisão e a autoridade que o seu público espera.</div>
+    </div>
+    <div class="deliverable">
+      <div class="d-num">04</div>
+      <div class="d-title">Revisão técnica colaborativa</div>
+      <div class="d-desc">Você revisa, corrige e valida o conteúdo clínico. Eu ajusto o texto. Duas rodadas inclusas — o livro só fecha quando você aprovar.</div>
+    </div>
+    <div class="deliverable">
+      <div class="d-num">05</div>
+      <div class="d-title">Arquivo final editável</div>
+      <div class="d-desc">Entrega em Word formatado — pronto para diagramação e publicação. Você fica com todos os direitos autorais. Seu nome. Sua obra.</div>
+    </div>
+    <div class="deliverable">
+      <div class="d-num">06</div>
+      <div class="d-title">Sigilo total</div>
+      <div class="d-desc">Contrato com cláusula de confidencialidade. Ninguém sabe como o livro foi escrito — o que importa é que ele existe e tem o seu nome.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Investimento</p>
+  <h2>Pacote completo.<br /><em>Sem surpresa.</em></h2>
+  <div class="invest-wrap">
+    <div class="invest-main">
+      <p class="invest-label">Ghostwriting Completo · livro técnico</p>
+      <div><span class="invest-curr">R$</span><span class="invest-value">7.500</span></div>
+      <p class="invest-alt">à vista via Pix<br />ou 3× R$ 2.600 no cartão</p>
+    </div>
+    <div class="invest-list">
+      <ul>
+        <li>Briefing por entrevistas — você fala, eu estruturo</li>
+        <li>Manuscrito completo — 22 capítulos + anexos</li>
+        <li>~115 a 155 páginas no formato 16×23</li>
+        <li>Linguagem técnica com sua voz preservada</li>
+        <li>2 rodadas de revisão e ajuste inclusas</li>
+        <li>Arquivo Word formatado pronto para diagramação</li>
+        <li>Direitos autorais 100% seus — seu nome na capa</li>
+        <li>Contrato com sigilo total garantido</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-tag">Como começamos</p>
+  <h2>4 passos.<br /><em>Começo imediato.</em></h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Você confirma</div>
+      <div class="step-desc">Um "fechado" já basta. Assinamos o contrato com cláusula de sigilo — sem burocracia, sem demora.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Briefing inicial</div>
+      <div class="step-desc">Primeira sessão de entrevista — sua trajetória, seus casos, seu método. Pode ser por áudio. Eu organizo tudo.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Entrada</div>
+      <div class="step-desc">50% na assinatura via Pix · 50% na entrega do manuscrito final aprovado. Segurança dos dois lados.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-title">Escrita e entrega</div>
+      <div class="step-desc">Manuscrito entregue por partes para sua validação. Você acompanha, revisa e aprova — capítulo a capítulo.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-sigs">
+    <div class="footer-col">
+      <h4>Orlando Carvalho</h4>
+      <p>Fundador · Brary Editora<br />CNPJ 37.366.629/0001-60<br />(21) 98346-1734 · orlandocarvalho.gm</p>
+    </div>
+    <div class="footer-col">
+      <h4>Dra. Amanda Pereira</h4>
+      <p>Contratante · Fisioterapeuta<br />Espaço Clínico Viver Bem · Goiânia, GO<br />@amanda_pereira_fisioterapeuta · @espacoclinicoviverbem</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Rio de Janeiro, 09 de maio de 2026 &nbsp;·&nbsp; Válida até 16 de maio de 2026 &nbsp;·&nbsp; Brary Editora</span>
+    <div style="display:flex;gap:16px;align-items:center;">
+      <a href="https://orlando-servicos.vercel.app" target="_blank">orlando-servicos.vercel.app</a>
+      <button class="print-btn" onclick="window.print()">🖨 Salvar PDF</button>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
