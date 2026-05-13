@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Configurador — Protocolo Amanda Pereira · Brary</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
-      --bg:         #08050F;
-      --surface:    #100B1A;
-      --surface2:   #160F24;
-      --border:     #231A35;
-      --purple:     #7C3AED;
-      --purple-lt:  #A855F7;
+      --bg: #08050F;
+      --surface: #100B1A;
+      --surface2: #160F24;
+      --border: #231A35;
+      --purple: #7C3AED;
+      --purple-lt: #A855F7;
       --purple-dim: #3D1C7A;
-      --white:      #F5F0FF;
-      --muted:      #6B5E8A;
-      --gold:       #D4A843;
-      --gold-dim:   #3D2E0A;
-      --green:      #22C55E;
-      --green-dim:  #052E16;
+      --white: #F5F0FF;
+      --muted: #6B5E8A;
+      --gold: #D4A843;
+      --gold-dim: #3D2E0A;
+      --green: #22C55E;
+      --green-dim: #052E16;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--bg);
       color: var(--white);
@@ -49,7 +63,11 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-    .topbar strong { color: var(--purple-lt); font-weight: 500; }
+
+    .topbar strong {
+      color: var(--purple-lt);
+      font-weight: 500;
+    }
 
     /* HERO */
     .hero {
@@ -58,30 +76,34 @@
       min-height: 340px;
       border-bottom: 1px solid var(--border);
     }
+
     .hero-left {
       padding: 56px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
+
     .hero-right {
       position: relative;
       background: linear-gradient(135deg, #3D1C7A 0%, #08050F 100%);
       overflow: hidden;
     }
+
     .hero-right::after {
       content: 'AP';
       font-family: 'Bebas Neue', sans-serif;
       font-size: 220px;
-      color: rgba(168,85,247,.12);
+      color: rgba(168, 85, 247, .12);
       line-height: 1;
       position: absolute;
       bottom: -20px;
       right: -10px;
     }
+
     .hero-badge {
       display: inline-flex;
-      background: rgba(124,58,237,.15);
+      background: rgba(124, 58, 237, .15);
       border: 1px solid var(--purple-dim);
       padding: 5px 14px;
       border-radius: 40px;
@@ -92,16 +114,37 @@
       margin-bottom: 18px;
       width: fit-content;
     }
+
     .hero-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(52px, 8vw, 96px);
       line-height: .9;
       color: var(--white);
     }
-    .hero-name span { display: block; color: var(--purple-lt); }
-    .hero-divider { width: 48px; height: 2px; background: var(--purple); margin: 18px 0; }
-    .hero-sub { font-size: 13px; color: var(--muted); line-height: 1.65; max-width: 400px; }
-    .hero-sub strong { color: var(--white); font-weight: 500; }
+
+    .hero-name span {
+      display: block;
+      color: var(--purple-lt);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--purple);
+      margin: 18px 0;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 400px;
+    }
+
+    .hero-sub strong {
+      color: var(--white);
+      font-weight: 500;
+    }
 
     /* INSTRUÇÃO */
     .instrucao {
@@ -112,12 +155,21 @@
       align-items: center;
       gap: 16px;
     }
+
     .instrucao-icon {
       font-size: 24px;
       flex-shrink: 0;
     }
-    .instrucao-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    .instrucao-text strong { color: var(--white); }
+
+    .instrucao-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .instrucao-text strong {
+      color: var(--white);
+    }
 
     /* CONFIGURADOR */
     .configurador {
@@ -129,7 +181,11 @@
     }
 
     /* CARDS */
-    .cards { display: flex; flex-direction: column; gap: 2px; }
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
     .card {
       background: var(--surface);
@@ -144,33 +200,58 @@
       cursor: pointer;
       position: relative;
     }
+
     .card.selected {
       border-left-color: var(--purple);
       background: var(--surface2);
     }
+
     .card.locked {
       border-left-color: var(--gold);
       cursor: default;
     }
+
     .card.locked.selected {
       border-left-color: var(--gold);
     }
-    .card:not(.locked):hover { background: var(--surface2); }
 
-    .card-left { display: flex; flex-direction: column; gap: 4px; }
+    .card:not(.locked):hover {
+      background: var(--surface2);
+    }
+
+    .card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .card-num {
       font-size: 10px;
       letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .card-title {
       font-size: 15px;
       font-weight: 500;
       color: var(--white);
     }
-    .card-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 2px; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 2px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
     .tag {
       font-size: 9px;
       letter-spacing: .12em;
@@ -180,12 +261,19 @@
       padding: 2px 8px;
       border-radius: 2px;
     }
+
     .tag-gold {
       color: var(--gold);
       border-color: var(--gold-dim);
     }
 
-    .card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
     .card-price {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 28px;
@@ -193,12 +281,29 @@
       letter-spacing: .04em;
       white-space: nowrap;
     }
-    .card-price-curr { font-size: 13px; color: var(--muted); margin-right: 2px; }
-    .card-price.gold { color: var(--gold); }
+
+    .card-price-curr {
+      font-size: 13px;
+      color: var(--muted);
+      margin-right: 2px;
+    }
+
+    .card-price.gold {
+      color: var(--gold);
+    }
 
     /* TOGGLE */
-    .toggle-wrap { display: flex; align-items: center; gap: 8px; }
-    .lock-icon { font-size: 14px; color: var(--gold); }
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lock-icon {
+      font-size: 14px;
+      color: var(--gold);
+    }
+
     .toggle {
       width: 44px;
       height: 24px;
@@ -208,7 +313,11 @@
       transition: background .2s;
       flex-shrink: 0;
     }
-    .toggle.on { background: var(--purple); }
+
+    .toggle.on {
+      background: var(--purple);
+    }
+
     .toggle::after {
       content: '';
       position: absolute;
@@ -220,15 +329,18 @@
       left: 3px;
       transition: left .2s;
     }
-    .toggle.on::after { left: 23px; }
+
+    .toggle.on::after {
+      left: 23px;
+    }
 
     /* PARCERIA BADGE */
     .parceria-badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: rgba(212,168,67,.08);
-      border: 1px solid rgba(212,168,67,.2);
+      background: rgba(212, 168, 67, .08);
+      border: 1px solid rgba(212, 168, 67, .2);
       color: var(--gold);
       font-size: 9px;
       letter-spacing: .12em;
@@ -244,6 +356,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
     }
+
     .sidebar-header {
       padding: 20px 24px;
       border-bottom: 1px solid var(--border);
@@ -252,10 +365,12 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .sidebar-items {
       padding: 0;
       min-height: 120px;
     }
+
     .sidebar-item {
       display: flex;
       justify-content: space-between;
@@ -264,29 +379,37 @@
       border-bottom: 1px solid var(--border);
       gap: 12px;
     }
+
     .sidebar-item-name {
       font-size: 12px;
       color: var(--white);
       line-height: 1.4;
     }
+
     .sidebar-item-price {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 16px;
       color: var(--purple-lt);
       white-space: nowrap;
     }
-    .sidebar-item-price.gold { color: var(--gold); }
+
+    .sidebar-item-price.gold {
+      color: var(--gold);
+    }
+
     .sidebar-empty {
       padding: 32px 24px;
       font-size: 12px;
       color: var(--muted);
       text-align: center;
     }
+
     .sidebar-total {
       padding: 20px 24px;
       border-top: 2px solid var(--border);
       background: var(--surface2);
     }
+
     .sidebar-total-label {
       font-size: 10px;
       letter-spacing: .14em;
@@ -294,6 +417,7 @@
       color: var(--muted);
       margin-bottom: 6px;
     }
+
     .sidebar-total-value {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 48px;
@@ -301,12 +425,14 @@
       line-height: 1;
       transition: all .3s;
     }
+
     .sidebar-total-curr {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
       color: var(--muted);
       margin-right: 4px;
     }
+
     .sidebar-parceria {
       margin-top: 10px;
       padding-top: 10px;
@@ -325,6 +451,7 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .btn {
       display: flex;
       align-items: center;
@@ -341,28 +468,70 @@
       transition: all .2s;
       width: 100%;
     }
+
     .btn-whatsapp {
       background: #25D366;
       color: #fff;
     }
-    .btn-whatsapp:hover { background: #1fba59; }
+
+    .btn-whatsapp:hover {
+      background: #1fba59;
+    }
+
     .btn-pdf {
       background: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
     }
-    .btn-pdf:hover { border-color: var(--purple); color: var(--purple-lt); }
+
+    .btn-pdf:hover {
+      border-color: var(--purple);
+      color: var(--purple-lt);
+    }
 
     /* PRINT */
     @media print {
-      .topbar, .instrucao, .sidebar, .btns, .card:not(.selected) { display: none !important; }
-      .configurador { grid-template-columns: 1fr; padding: 20px; }
-      .card.selected { break-inside: avoid; }
-      body { background: white; color: black; }
-      .card { background: #f9f9f9; border: 1px solid #ddd; }
-      .card-title { color: #1a0a2e; }
-      .card-num, .card-desc { color: #666; }
-      .card-price { color: #7C3AED; }
+
+      .topbar,
+      .instrucao,
+      .sidebar,
+      .btns,
+      .card:not(.selected) {
+        display: none !important;
+      }
+
+      .configurador {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .card.selected {
+        break-inside: avoid;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      .card {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+      }
+
+      .card-title {
+        color: #1a0a2e;
+      }
+
+      .card-num,
+      .card-desc {
+        color: #666;
+      }
+
+      .card-price {
+        color: #7C3AED;
+      }
+
       .print-summary {
         display: block !important;
         padding: 20px;
@@ -370,300 +539,334 @@
         margin-top: 20px;
       }
     }
-    .print-summary { display: none; }
+
+    .print-summary {
+      display: none;
+    }
 
     @media (max-width: 768px) {
-      .topbar, .instrucao, .configurador { padding-left: 20px; padding-right: 20px; }
-      .hero-left { padding: 40px 20px; }
-      .hero-right { display: none; }
-      .configurador { grid-template-columns: 1fr; }
-      .sidebar { position: static; }
+
+      .topbar,
+      .instrucao,
+      .configurador {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero-left {
+        padding: 40px 20px;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .configurador {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header class="topbar">
-  <div><strong>Brary</strong> · Orlando Carvalho &nbsp;·&nbsp; Configurador de Proposta</div>
-  <div>Rio de Janeiro, 12 de maio de 2026</div>
-</header>
+  <header class="topbar">
+    <div><strong>Brary</strong> · Orlando Carvalho &nbsp;·&nbsp; Configurador de Proposta</div>
+    <div>Rio de Janeiro, 12 de maio de 2026</div>
+  </header>
 
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">Protocolo Amanda Pereira · Configure seu pacote</div>
-    <h1 class="hero-name">MONTE SEU<br /><span>PROGRAMA</span></h1>
-    <div class="hero-divider"></div>
-    <p class="hero-sub">
-      Selecione os entregáveis que fazem sentido para você agora.<br />
-      <strong>O total atualiza em tempo real.</strong><br />
-      Quando estiver pronta, envie sua seleção diretamente para o Orlando.
-    </p>
-  </div>
-  <div class="hero-right"></div>
-</div>
-
-<div class="instrucao">
-  <div class="instrucao-icon">👆</div>
-  <div class="instrucao-text">
-    <strong>Como funciona:</strong> clique em cada card para incluir ou retirar o entregável do seu pacote. Itens com 🔒 fazem parte da estrutura base e não podem ser removidos. Itens com ✦ são uma oferta especial de parceria.
-  </div>
-</div>
-
-<div class="configurador">
-
-  <!-- CARDS -->
-  <div class="cards" id="cards">
-
-    <!-- 01 FREE -->
-    <div class="card selected" data-id="01" data-value="2500" data-locked="false" data-parceria="false">
-      <div class="card-left">
-        <div class="card-num">Entregável 01</div>
-        <div class="card-title">Mentoria de Produto</div>
-        <div class="card-desc">Sessões de trabalho estratégico ao longo do projeto — extração de conhecimento tácito, mapeamento do negócio, desbloqueio de travas e ensino de ferramentas como Trello, funil e lançamento.</div>
-        <div class="card-tags">
-          <span class="tag">KX-GM™</span>
-          <span class="tag">GM-Canvas™</span>
-          <span class="tag">VFSN™</span>
-        </div>
-      </div>
-      <div class="card-right">
-        <div class="card-price"><span class="card-price-curr">R$</span>2.500</div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="toggle-01"></div>
-        </div>
-      </div>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Protocolo Amanda Pereira · Configure seu pacote</div>
+      <h1 class="hero-name">MONTE SEU<br /><span>PROGRAMA</span></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">
+        Selecione os entregáveis que fazem sentido para você agora.<br />
+        <strong>O total atualiza em tempo real.</strong><br />
+        Quando estiver pronta, envie sua seleção diretamente para o Orlando.
+      </p>
     </div>
-
-    <!-- 02 FREE -->
-    <div class="card selected" data-id="02" data-value="2000" data-locked="false" data-parceria="false">
-      <div class="card-left">
-        <div class="card-num">Entregável 02</div>
-        <div class="card-title">Arquitetura de Produto</div>
-        <div class="card-desc">Estrutura completa do Protocolo Amanda Pereira — naming, posicionamento, 5 módulos, calendário mensal, turma de 12 pessoas. O programa como produto, do conceito ao lançamento.</div>
-        <div class="card-tags">
-          <span class="tag">PBML™</span>
-          <span class="tag">EEVE™</span>
-          <span class="tag">GM-Canvas™</span>
-        </div>
-      </div>
-      <div class="card-right">
-        <div class="card-price"><span class="card-price-curr">R$</span>2.000</div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="toggle-02"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 03 FREE -->
-    <div class="card selected" data-id="03" data-value="1500" data-locked="false" data-parceria="false">
-      <div class="card-left">
-        <div class="card-num">Entregável 03</div>
-        <div class="card-title">Desenho de Método</div>
-        <div class="card-desc">Conteúdo detalhado, blocos de ensino, dinâmicas práticas e entregáveis para o aluno em cada um dos 5 módulos — incluindo casos clínicos reais com pacientes.</div>
-        <div class="card-tags">
-          <span class="tag">KX-GM™</span>
-          <span class="tag">PBML™</span>
-        </div>
-      </div>
-      <div class="card-right">
-        <div class="card-price"><span class="card-price-curr">R$</span>1.500</div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="toggle-03"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 04 FREE -->
-    <div class="card selected" data-id="04" data-value="2800" data-locked="false" data-parceria="false">
-      <div class="card-left">
-        <div class="card-num">Entregável 04</div>
-        <div class="card-title">Apresentação da Palestra Gratuita</div>
-        <div class="card-desc">6 slides interativos com pitch integrado, timer ao vivo, identidade visual e link publicado. Porta de entrada para o Protocolo Amanda Pereira — converte audiência em lista de espera.</div>
-        <div class="card-tags">
-          <span class="tag">Audiência™</span>
-          <span class="tag">EEVE™</span>
-          <span class="tag">Storytelling</span>
-        </div>
-      </div>
-      <div class="card-right">
-        <div class="card-price"><span class="card-price-curr">R$</span>2.800</div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="toggle-04"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 05 FREE -->
-    <div class="card selected" data-id="05" data-value="1200" data-locked="false" data-parceria="false">
-      <div class="card-left">
-        <div class="card-num">Entregável 05</div>
-        <div class="card-title">Apostila do Programa</div>
-        <div class="card-desc">Material de apoio para os 5 módulos — fichas clínicas, protocolos práticos e conteúdo que o aluno leva para a clínica e aplica imediatamente.</div>
-      </div>
-      <div class="card-right">
-        <div class="card-price"><span class="card-price-curr">R$</span>1.200</div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="toggle-05"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 08 FREE PARCERIA -->
-    <div class="card selected" data-id="08" data-value="3500" data-locked="false" data-parceria="true">
-      <div class="card-left">
-        <div class="card-num">Entregável 06</div>
-        <div class="card-title">Certificado de Metodologia SBCM</div>
-        <div class="card-desc">Submissão do Protocolo Amanda Pereira ao Sistema Brary de Certificação Metodológica — banca independente, número de protocolo, Parecer Técnico Final e verificação pública. Nenhum concorrente tem isso.</div>
-        <div class="card-tags">
-          <span class="tag tag-gold">Brary Institute</span>
-          <span class="tag tag-gold">SBCM</span>
-        </div>
-        <div style="margin-top:10px;">
-          <span class="parceria-badge">✦ Oferta especial de parceria</span>
-        </div>
-      </div>
-      <div class="card-right">
-        <div class="card-price gold"><span class="card-price-curr">R$</span>3.500</div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="toggle-08"></div>
-        </div>
-      </div>
-    </div>
-
+    <div class="hero-right"></div>
   </div>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sidebar-header">Sua seleção</div>
-    <div class="sidebar-items" id="sidebar-items">
-      <div class="sidebar-empty" id="sidebar-empty" style="display:none">Nenhum item selecionado</div>
-    </div>
-    <div class="sidebar-total">
-      <div class="sidebar-total-label">Total selecionado</div>
-      <div class="sidebar-total-value">
-        <span class="sidebar-total-curr">R$</span><span id="total-display">13.000</span>
-      </div>
-      <div class="sidebar-parceria" id="parceria-info">
-        ✦ Inclui oferta especial de parceria
-      </div>
-    </div>
-    <div class="btns">
-      <button class="btn btn-whatsapp" onclick="enviarWhatsApp()">
-        💬 Enviar seleção para Orlando
-      </button>
-      <button class="btn btn-pdf" onclick="window.print()">
-        🖨 Salvar como PDF
-      </button>
+  <div class="instrucao">
+    <div class="instrucao-icon">👆</div>
+    <div class="instrucao-text">
+      <strong>Como funciona:</strong> Como funciona: clique em cada card para incluir ou retirar o entregável do seu
+      pacote. O total atualiza em tempo real. Itens com ✦ são uma oferta especial de parceria. Quando estiver pronta,
+      envie sua seleção para o Orlando.
     </div>
   </div>
 
-</div>
+  <div class="configurador">
 
-<!-- PRINT SUMMARY -->
-<div class="print-summary" id="print-summary">
-  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#1a0a2e;margin-bottom:16px;">Protocolo Amanda Pereira — Seleção</h2>
-  <div id="print-items"></div>
-  <div style="margin-top:16px;padding-top:16px;border-top:2px solid #7C3AED;font-family:'Bebas Neue',sans-serif;font-size:28px;color:#7C3AED;">
-    Total: R$ <span id="print-total"></span>
+    <!-- CARDS -->
+    <div class="cards" id="cards">
+
+      <!-- 01 FREE -->
+      <div class="card selected" data-id="01" data-value="2500" data-locked="false" data-parceria="false">
+        <div class="card-left">
+          <div class="card-num">Entregável 01</div>
+          <div class="card-title">Mentoria de Produto</div>
+          <div class="card-desc">Sessões de trabalho estratégico ao longo do projeto — extração de conhecimento tácito,
+            mapeamento do negócio, desbloqueio de travas e ensino de ferramentas como Trello, funil e lançamento.</div>
+          <div class="card-tags">
+            <span class="tag">KX-GM™</span>
+            <span class="tag">GM-Canvas™</span>
+            <span class="tag">VFSN™</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-price"><span class="card-price-curr">R$</span>2.500</div>
+          <div class="toggle-wrap">
+            <div class="toggle on" id="toggle-01"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 FREE -->
+      <div class="card selected" data-id="02" data-value="2000" data-locked="false" data-parceria="false">
+        <div class="card-left">
+          <div class="card-num">Entregável 02</div>
+          <div class="card-title">Arquitetura de Produto</div>
+          <div class="card-desc">Estrutura completa do Protocolo Amanda Pereira — naming, posicionamento, 5 módulos,
+            calendário mensal, turma de 12 pessoas. O programa como produto, do conceito ao lançamento.</div>
+          <div class="card-tags">
+            <span class="tag">PBML™</span>
+            <span class="tag">EEVE™</span>
+            <span class="tag">GM-Canvas™</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-price"><span class="card-price-curr">R$</span>2.000</div>
+          <div class="toggle-wrap">
+            <div class="toggle on" id="toggle-02"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 FREE -->
+      <div class="card selected" data-id="03" data-value="1500" data-locked="false" data-parceria="false">
+        <div class="card-left">
+          <div class="card-num">Entregável 03</div>
+          <div class="card-title">Desenho de Método</div>
+          <div class="card-desc">Conteúdo detalhado, blocos de ensino, dinâmicas práticas e entregáveis para o aluno em
+            cada um dos 5 módulos — incluindo casos clínicos reais com pacientes.</div>
+          <div class="card-tags">
+            <span class="tag">KX-GM™</span>
+            <span class="tag">PBML™</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-price"><span class="card-price-curr">R$</span>1.500</div>
+          <div class="toggle-wrap">
+            <div class="toggle on" id="toggle-03"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 FREE -->
+      <div class="card selected" data-id="04" data-value="2800" data-locked="false" data-parceria="false">
+        <div class="card-left">
+          <div class="card-num">Entregável 04</div>
+          <div class="card-title">Apresentação da Palestra Gratuita</div>
+          <div class="card-desc">6 slides interativos com pitch integrado, timer ao vivo, identidade visual e link
+            publicado. Porta de entrada para o Protocolo Amanda Pereira — converte audiência em lista de espera.</div>
+          <div class="card-tags">
+            <span class="tag">Audiência™</span>
+            <span class="tag">EEVE™</span>
+            <span class="tag">Storytelling</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-price"><span class="card-price-curr">R$</span>2.800</div>
+          <div class="toggle-wrap">
+            <div class="toggle on" id="toggle-04"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 FREE -->
+      <div class="card selected" data-id="05" data-value="1200" data-locked="false" data-parceria="false">
+        <div class="card-left">
+          <div class="card-num">Entregável 05</div>
+          <div class="card-title">Apostila do Programa</div>
+          <div class="card-desc">Material de apoio para os 5 módulos — fichas clínicas, protocolos práticos e conteúdo
+            que o aluno leva para a clínica e aplica imediatamente.</div>
+        </div>
+        <div class="card-right">
+          <div class="card-price"><span class="card-price-curr">R$</span>1.200</div>
+          <div class="toggle-wrap">
+            <div class="toggle on" id="toggle-05"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 FREE PARCERIA -->
+      <div class="card selected" data-id="08" data-value="3500" data-locked="false" data-parceria="true">
+        <div class="card-left">
+          <div class="card-num">Entregável 06</div>
+          <div class="card-title">Certificado de Metodologia SBCM</div>
+          <div class="card-desc">Submissão do Protocolo Amanda Pereira ao Sistema Brary de Certificação Metodológica —
+            banca independente, número de protocolo, Parecer Técnico Final e verificação pública. Nenhum concorrente tem
+            isso.</div>
+          <div class="card-tags">
+            <span class="tag tag-gold">Brary Institute</span>
+            <span class="tag tag-gold">SBCM</span>
+          </div>
+          <div style="margin-top:10px;">
+            <span class="parceria-badge">✦ Oferta especial de parceria</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-price gold"><span class="card-price-curr">R$</span>3.500</div>
+          <div class="toggle-wrap">
+            <div class="toggle on" id="toggle-08"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-header">Sua seleção</div>
+      <div class="sidebar-items" id="sidebar-items">
+        <div class="sidebar-empty" id="sidebar-empty" style="display:none">Nenhum item selecionado</div>
+      </div>
+      <div class="sidebar-total">
+        <div class="sidebar-total-label">Total selecionado</div>
+        <div class="sidebar-total-value">
+          <span class="sidebar-total-curr">R$</span><span id="total-display">13.000</span>
+        </div>
+        <div class="sidebar-parceria" id="parceria-info">
+          ✦ Inclui oferta especial de parceria
+        </div>
+      </div>
+      <div class="btns">
+        <button class="btn btn-whatsapp" onclick="enviarWhatsApp()">
+          💬 Enviar seleção para Orlando
+        </button>
+        <button class="btn btn-pdf" onclick="window.print()">
+          🖨 Salvar como PDF
+        </button>
+      </div>
+    </div>
+
   </div>
-  <div style="margin-top:12px;font-size:11px;color:#666;">
-    Brary · Orlando Carvalho · (21) 98346-1734 · Rio de Janeiro, 12 de maio de 2026
+
+  <!-- PRINT SUMMARY -->
+  <div class="print-summary" id="print-summary">
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#1a0a2e;margin-bottom:16px;">Protocolo Amanda
+      Pereira — Seleção</h2>
+    <div id="print-items"></div>
+    <div
+      style="margin-top:16px;padding-top:16px;border-top:2px solid #7C3AED;font-family:'Bebas Neue',sans-serif;font-size:28px;color:#7C3AED;">
+      Total: R$ <span id="print-total"></span>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:#666;">
+      Brary · Orlando Carvalho · (21) 98346-1734 · Rio de Janeiro, 12 de maio de 2026
+    </div>
   </div>
-</div>
 
-<script>
-  const items = [
-    { id: '01', name: 'Mentoria de Produto', value: 2500, locked: false, parceria: false, selected: true },
-    { id: '02', name: 'Arquitetura de Produto', value: 2000, locked: false, parceria: false, selected: true },
-    { id: '03', name: 'Desenho de Método', value: 1500, locked: false, parceria: false, selected: true },
-    { id: '04', name: 'Apresentação da Palestra Gratuita', value: 2800, locked: false, parceria: false, selected: true },
-    { id: '05', name: 'Apostila do Programa', value: 1200, locked: false, parceria: false, selected: true },
-    { id: '08', name: 'Certificado de Metodologia SBCM', value: 3500, locked: false, parceria: true, selected: true },
-  ];
+  <script>
+    const items = [
+      { id: '01', name: 'Mentoria de Produto', value: 2500, locked: false, parceria: false, selected: true },
+      { id: '02', name: 'Arquitetura de Produto', value: 2000, locked: false, parceria: false, selected: true },
+      { id: '03', name: 'Desenho de Método', value: 1500, locked: false, parceria: false, selected: true },
+      { id: '04', name: 'Apresentação da Palestra Gratuita', value: 2800, locked: false, parceria: false, selected: true },
+      { id: '05', name: 'Apostila do Programa', value: 1200, locked: false, parceria: false, selected: true },
+      { id: '08', name: 'Certificado de Metodologia SBCM', value: 3500, locked: false, parceria: true, selected: true },
+    ];
 
-  function fmt(n) {
-    return n.toLocaleString('pt-BR');
-  }
+    function fmt(n) {
+      return n.toLocaleString('pt-BR');
+    }
 
-  function updateSidebar() {
-    const selected = items.filter(i => i.selected);
-    const total = selected.reduce((s, i) => s + i.value, 0);
-    const hasParceria = selected.some(i => i.parceria);
+    function updateSidebar() {
+      const selected = items.filter(i => i.selected);
+      const total = selected.reduce((s, i) => s + i.value, 0);
+      const hasParceria = selected.some(i => i.parceria);
 
-    // total
-    document.getElementById('total-display').textContent = fmt(total);
+      // total
+      document.getElementById('total-display').textContent = fmt(total);
 
-    // parceria info
-    document.getElementById('parceria-info').style.display = hasParceria ? 'flex' : 'none';
+      // parceria info
+      document.getElementById('parceria-info').style.display = hasParceria ? 'flex' : 'none';
 
-    // sidebar items
-    const container = document.getElementById('sidebar-items');
-    const empty = document.getElementById('sidebar-empty');
-    container.querySelectorAll('.sidebar-item').forEach(el => el.remove());
+      // sidebar items
+      const container = document.getElementById('sidebar-items');
+      const empty = document.getElementById('sidebar-empty');
+      container.querySelectorAll('.sidebar-item').forEach(el => el.remove());
 
-    if (selected.length === 0) {
-      empty.style.display = 'block';
-    } else {
-      empty.style.display = 'none';
-      selected.forEach(item => {
-        const el = document.createElement('div');
-        el.className = 'sidebar-item';
-        el.innerHTML = `
+      if (selected.length === 0) {
+        empty.style.display = 'block';
+      } else {
+        empty.style.display = 'none';
+        selected.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'sidebar-item';
+          el.innerHTML = `
           <div class="sidebar-item-name">${item.name}</div>
           <div class="sidebar-item-price ${item.parceria ? 'gold' : ''}">R$ ${fmt(item.value)}</div>
         `;
-        container.insertBefore(el, document.getElementById('sidebar-empty'));
-      });
-    }
+          container.insertBefore(el, document.getElementById('sidebar-empty'));
+        });
+      }
 
-    // print
-    const printItems = document.getElementById('print-items');
-    printItems.innerHTML = selected.map(i =>
-      `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;">
+      // print
+      const printItems = document.getElementById('print-items');
+      printItems.innerHTML = selected.map(i =>
+        `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;">
         <span>${i.name}${i.parceria ? ' ✦' : ''}</span>
         <strong>R$ ${fmt(i.value)}</strong>
       </div>`
-    ).join('');
-    document.getElementById('print-total').textContent = fmt(total);
-  }
-
-  function toggleCard(card) {
-    const id = card.dataset.id;
-    const item = items.find(i => i.id === id);
-    if (!item || item.locked) return;
-
-    item.selected = !item.selected;
-    card.classList.toggle('selected', item.selected);
-
-    const toggle = card.querySelector('.toggle');
-    if (toggle) toggle.classList.toggle('on', item.selected);
-
-    updateSidebar();
-  }
-
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => toggleCard(card));
-  });
-
-  function enviarWhatsApp() {
-    const selected = items.filter(i => i.selected);
-    const total = selected.reduce((s, i) => s + i.value, 0);
-
-    let msg = '🎯 *Protocolo Amanda Pereira — Minha seleção:*\n\n';
-    selected.forEach(i => {
-      msg += `✅ ${i.name} — R$ ${fmt(i.value)}${i.parceria ? ' ✦' : ''}\n`;
-    });
-    msg += `\n💰 *Total: R$ ${fmt(total)}*`;
-    if (selected.some(i => i.parceria)) {
-      msg += '\n✦ Inclui oferta especial de parceria';
+      ).join('');
+      document.getElementById('print-total').textContent = fmt(total);
     }
 
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/5521983461734?text=${encoded}`, '_blank');
-  }
+    function toggleCard(card) {
+      const id = card.dataset.id;
+      const item = items.find(i => i.id === id);
+      if (!item || item.locked) return;
 
-  updateSidebar();
-</script>
+      item.selected = !item.selected;
+      card.classList.toggle('selected', item.selected);
+
+      const toggle = card.querySelector('.toggle');
+      if (toggle) toggle.classList.toggle('on', item.selected);
+
+      updateSidebar();
+    }
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => toggleCard(card));
+    });
+
+    function enviarWhatsApp() {
+      const selected = items.filter(i => i.selected);
+      const total = selected.reduce((s, i) => s + i.value, 0);
+
+      let msg = '🎯 *Protocolo Amanda Pereira — Minha seleção:*\n\n';
+      selected.forEach(i => {
+        msg += `✅ ${i.name} — R$ ${fmt(i.value)}${i.parceria ? ' ✦' : ''}\n`;
+      });
+      msg += `\n💰 *Total: R$ ${fmt(total)}*`;
+      if (selected.some(i => i.parceria)) {
+        msg += '\n✦ Inclui oferta especial de parceria';
+      }
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/5521983461734?text=${encoded}`, '_blank');
+    }
+
+    updateSidebar();
+  </script>
 
 </body>
+
 </html>
